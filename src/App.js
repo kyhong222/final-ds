@@ -9,20 +9,15 @@ function App() {
     setSelectedFile(e.target.files[0]);
   };
 
+  const fileStorage = [];
+
   const handlePost = () => {
     const formData = new FormData();
     formData.append('file', selectedFile);
 
     console.log(selectedFile);
+    fileStorage.push(selectedFile);
 
-    const url = 'http://localhost:3000';
-    const config = {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    }
-
-    return post(url, formData, config);
   }
 
   return (

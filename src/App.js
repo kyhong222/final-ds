@@ -11,10 +11,15 @@ import {
 import Modal from '@material-ui/core/Modal'
 import { blue } from '@material-ui/core/colors';
 
-const SERVER = 'http://192.168.0.5:9090/test';
+const SERVER = '/test';
+//const SERVER = 'http://192.168.0.5:9090/test';
 axios.defaults.baseURL = SERVER;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.get['Content-Type'] = 'application/json;charset=utf-8';
+axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
+
+
 
 const useStyles = makeStyles(theme => ({
   divider: {
@@ -79,26 +84,26 @@ function App() {
 
     console.log("post")
 
-    await axios.get(SERVER, data)
+    await axios.post(SERVER, data)
     .then( async res => {
       console.log(res);
       // 전체목록 초기화
       const data = {
         fnc: "showAllContent",
       };
-      await axios.get(SERVER, data).then(res => {
-        console.log(res);
-        setContentData(res.data);
-      })
+      //await axios.post(SERVER, data).then(res => {
+      //  console.log(res);
+      //  setContentData(res.data);
+      //})
     })
     .catch(err => {
       console.log(err);
     })
 
     // modal 초기화
-    setName("");
-    setDescription("");
-    setTags("");
+    //setName("");
+    //setDescription("");
+    //setTags("");
     // modal close
   }
 

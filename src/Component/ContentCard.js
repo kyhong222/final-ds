@@ -52,6 +52,8 @@ export default function ContentCard ({fileData}){
   const classes = useStyles();
   const theme = useTheme();
 
+  console.log("fileData", fileData)
+
   const[isOpen, setIsOpen] = React.useState(null);
   const open = Boolean(isOpen);
 
@@ -80,7 +82,7 @@ export default function ContentCard ({fileData}){
         className={classes.content}>
           <Typography
           >
-            Live From Space
+            {fileData.name}
           </Typography>
         </CardContent>
 
